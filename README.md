@@ -22,7 +22,7 @@ Tutto questo con un'interazione naturale e semplificata attraverso l'AI! ðŸ¤–ðŸ’
 ### 1. Clona questo repository:
 ```bash
 git clone <URL_DEL_REPOSITORY>
-cd GPT-Terminal-Assistant
+cd pc-assistant
 ```
 ### 2. Installa le dipendenze:
 Assicurati di avere Python 3 installato e poi esegui:
