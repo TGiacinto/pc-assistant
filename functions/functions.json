@@ -1,0 +1,21 @@
+[
+  {
+    "type": "function",
+    "function": {
+      "name": "execute_script",
+      "description": "Execute scripts from the terminal",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "script": {
+            "type": "string",
+            "description": "The name or path of the script to be executed"
+          }
+        },
+        "required": [
+          "script"
+        ]
+      }
+    }
+  }
+]
