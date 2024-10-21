@@ -19,14 +19,17 @@ def execute_script(script):
         stdout = result.stdout
         stderr = result.stderr
         stdout = colored(stdout, 'green')
-        print(stdout)
-        if stdout != '':
-            stdout = "Script Eseguito correttamente"
+
 
     except subprocess.CalledProcessError as e:
         # Se lo script fallisce, ritorna l'errore
         stdout = e.stdout
         stderr = e.stderr
+
+    stdout = colored(stdout, 'green')
+    print(stdout)
+    if stdout != '':
+        stdout = "Script Eseguito correttamente"
 
     result = {
         "stdout": stdout,
