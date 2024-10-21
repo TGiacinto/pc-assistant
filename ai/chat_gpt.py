@@ -7,8 +7,8 @@ from utils.utils import *
 
 
 class ChatGpt:
-    def __init__(self):
-        self.client = OpenAI()
+    def __init__(self, openai_api_key):
+        self.client = OpenAI(api_key=openai_api_key)
         self.model = "gpt-4o"
         self.prompt = fetch_prompt('main_prompt.txt')
         info_os = f"{os.name} {platform.system()} {platform.release()}"
@@ -17,7 +17,7 @@ class ChatGpt:
         self.messages = self.initialize()
 
     def initialize(self):
-        self.messages = None
+        self.messages = []
         return [
             {"role": "system", "content": self.prompt}
         ]

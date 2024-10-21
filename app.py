@@ -1,3 +1,5 @@
+import os
+
 import pyfiglet
 from dotenv import load_dotenv
 from termcolor import colored
@@ -12,11 +14,15 @@ def print_ascii_art():
 
 
 if __name__ == "__main__":
-    ai = ChatGpt()
     art = print_ascii_art()
     colored_art = colored(art, 'blue')
     print(colored_art)
 
+    openai_key = os.getenv("OPENAI_API_KEY", None)
+    if openai_key is None:
+        openai_key = input("Please enter your OpenAI API key: ")
+
+    ai = ChatGpt(openai_api_key=openai_key)
     while True:
         user_input = input("User: ")
 
