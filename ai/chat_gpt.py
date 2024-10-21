@@ -17,7 +17,7 @@ class ChatGpt:
         self.messages = self.initialize()
 
     def initialize(self):
-        self.messages = None
+        self.messages = []
         return [
             {"role": "system", "content": self.prompt}
         ]
