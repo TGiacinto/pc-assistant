@@ -1,5 +1,7 @@
+import locale
 import platform
 
+import pycountry
 from openai import OpenAI
 
 from functions.function_execute import execute_script
@@ -10,10 +12,13 @@ class ChatGpt:
     def __init__(self, openai_api_key):
         self.client = OpenAI(api_key=openai_api_key)
         self.model = "gpt-4o"
+        lang, _ = locale.getdefaultlocale()
+        iso639_lang = lang.split('_')[0]
+        language_name = pycountry.languages.get(alpha_2=iso639_lang).name
         self.prompt = fetch_prompt('main_prompt.txt')
         info_os = f"{os.name} {platform.system()} {platform.release()}"
-        self.prompt = self.prompt.replace("{os}", info_os)
-        self.prompt_final_answer = fetch_prompt('answer_prompt.txt')
+        self.prompt = self.prompt.replace("{os}", info_os).replace("{lang}", language_name)
+        self.prompt_final_answer = fetch_prompt('answer_prompt.txt').replace("{lang}", language_name)
         self.messages = self.initialize()
 
     def initialize(self):
