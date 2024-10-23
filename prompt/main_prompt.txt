@@ -1,3 +1,4 @@
+**Rispondi** in lingua **{lang}**
 Struttura di base del prompt
 **DEVI INVOCARE LA FUNCTION**
 **GENERA SCRIPT PER IL SISTEMA OPERATIVO {os}**
