@@ -5,31 +5,31 @@ from termcolor import colored
 
 
 def execute_script(script):
+    stdout_array = []
+    stderr = ''
+    stdout = 'Script executed successfully'
+    process = None
     try:
         # Esegui lo script usando il modulo subprocess
-        result = subprocess.run(
-            script,  # Lo script da eseguire (può essere un comando o uno script Python)
-            shell=True,  # Utilizza la shell per eseguire il comando
-            check=True,  # Solleva un'eccezione se il comando fallisce
-            stdout=subprocess.PIPE,  # Cattura lo stdout (output standard)
-            stderr=subprocess.PIPE,  # Cattura lo stderr (errori)
-            text=True  # Interpreta l'output come stringa
-        )
+        process = subprocess.Popen(
+            script, shell=True,
+            stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+            universal_newlines=True)
 
-        stdout = result.stdout
-        stderr = result.stderr
-        stdout = colored(stdout, 'green')
+        for line in process.stdout:
+            line = line.rstrip()  # Rimuove nuovi i caratteri di fine riga
+            stdout_array.append(line)
+            print(colored(line, 'green'))
+
 
 
     except subprocess.CalledProcessError as e:
         # Se lo script fallisce, ritorna l'errore
-        stdout = e.stdout
         stderr = e.stderr
 
-    stdout = colored(stdout, 'green')
-    print(stdout)
-    if stdout != '':
-        stdout = "Script Eseguito correttamente"
+    stderr = process.stderr.read()
+    if process is not None and stderr:
+        stdout = ""
 
     result = {
         "stdout": stdout,
