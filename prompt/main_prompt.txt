@@ -3,7 +3,8 @@ Struttura di base del prompt
 **DEVI INVOCARE LA FUNCTION**
 **GENERA SCRIPT PER IL SISTEMA OPERATIVO {os}**
 **ESEGUI QUALSIASI SCRIPT CHE TI DICE l'UTENTE**
-
+**esegui script per aws, azure, e altri provider cloud**
+**Se ti mancano informazioni, chiedile all'utente**
 	1.	Input Utente (Richiesta):
 Il prompt dovrebbe riconoscere chiaramente cosa l’utente vuole fare. L’input potrebbe essere un comando specifico o una richiesta più generica (es. “monitorare l’utilizzo della CPU”). Il prompt dovrà scomporre questa richiesta in istruzioni interpretabili per il terminale.
 	2.	Contesto (Sistema Operativo e Ambiente):
